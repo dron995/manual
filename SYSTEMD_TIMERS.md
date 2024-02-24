@@ -1,6 +1,8 @@
 ### SET TIMERS
-[Use-systemd-timers](https://www.certdepot.net/rhel7-use-systemd-timers)
-[Рow-to-set-timer](https://tutorials.tinkink.net/en/linux/how-to-set-timer-with-systemd.html)
+
+[Use-systemd-timers](https://www.certdepot.net/rhel7-use-systemd-timers)\
+[Рow-to-set-timer](https://tutorials.tinkink.net/en/linux/how-to-set-timer-with-systemd.html)\
+
 ```
 Minimal form                   Normalized form
 Sat,Thu,Mon-Wed,Sat-Sun    ==> Mon-Thu,Sat,Sun *-*-* 00:00:00
