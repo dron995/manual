@@ -32,3 +32,7 @@ git branch -M main
 git remote add origin git@github.com:dron995/{repo}.git
 git push -u origin main
 ```
+### Просмотр установок с источником
+```
+git config --list --show-origin
+```
