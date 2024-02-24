@@ -16,7 +16,6 @@ git config --global core.quotepath off
 ```
 git config --global core.autocrlf input
 git config --global core.safecrlf warn
-git config --list --show-origin
 ```
 ### Подпись
 ```
