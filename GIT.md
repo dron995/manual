@@ -1,4 +1,4 @@
-### main
+### Основные установки 
 [link howto](https://githowto.com/ru/setup)
 ```
 git config --global user.name "dron99"
@@ -25,4 +25,10 @@ gpg --list-secret-keys --keyid-format LONG
 gpg --armor --export {key}
 git config --global user.signingkey {key}
 git config --global commit.gpgsign true
+```
+### Удаленный репозиторий и ветка
+```
+git branch -M main
+git remote add origin git@github.com:dron995/{repo}.git
+git push -u origin main
 ```
