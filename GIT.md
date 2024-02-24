@@ -1,4 +1,5 @@
-### https://githowto.com/ru/setup
+### main
+[link howto](https://githowto.com/ru/setup)
 ```
 git config --global user.name "dron99"
 git config --global user.email dron995@icloud.com
