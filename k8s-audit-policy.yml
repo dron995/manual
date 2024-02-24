@@ -1,0 +1,67 @@
+apiVersion: audit.k8s.io/v1
+kind: Policy
+
+# Не логировать стадию RequestReceived
+omitStages:
+  - "RequestReceived"
+
+rules:
+
+# Не логируем запросы типа "get", "list", "watch" потому что на фиг не надо
+  - level: None
+    verbs: ["get", "list", "watch", "leases"]
+    resources:
+      - group: ""
+        resources: ["*"]
+
+# Не логируем ничего относящегося к следующим ресурсам
+  - level: None
+    resources:
+      - group: ""
+        resources: ["pods", "nodes", "namespaces", "leases"]
+
+# Логируем только метаданные
+  - level: Metadata
+    verbs: ["create", "update", "delete", "patch"]
+    userGroups:
+      - "/kubernetes-admins"
+      - "/kubernetes-auditors"
+      - "/kubernetes-das-admins"
+      - "/kubernetes-das-developer"
+      - "/kubernetes-devops"
+      - "/kubernetes-duty"
+      - "/kubernetes-fes-admins"
+      - "/kubernetes-fes-developers"
+      - "/kubernetes-learn"
+      - "/kubernetes-monitoring"
+      - "/kubernetes-qai-admins"
+      - "/kubernetes-qai-developer"
+      - "/kubernetes-tpp-admins"
+      - "/kubernetes-tpp-developers"
+    resources:
+      - group: ""
+        resources: ["secrets", "configmaps"]
+
+# Логирование метаданных и тела запроса
+  - level: Request
+    verbs: ["create", "update", "delete", "patch"]
+    userGroups:
+      - "/kubernetes-admins"
+      - "/kubernetes-auditors"
+      - "/kubernetes-das-admins"
+      - "/kubernetes-das-developer"
+      - "/kubernetes-devops"
+      - "/kubernetes-duty"
+      - "/kubernetes-fes-admins"
+      - "/kubernetes-fes-developers"
+      - "/kubernetes-learn"
+      - "/kubernetes-monitoring"
+      - "/kubernetes-qai-admins"
+      - "/kubernetes-qai-developer"
+      - "/kubernetes-tpp-admins"
+      - "/kubernetes-tpp-developers"
+
+# Все остальное не логируем вообще
+  - level: None
+    omitStages:
+      - "RequestReceived"
