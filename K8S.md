@@ -34,16 +34,16 @@ kind: KubeletConfiguration
 cgroupDriver: systemd
 ```
 *Note: Starting with v1.22 and later, when creating a cluster with kubeadm, if the user does not set the cgroupDriver field under KubeletConfiguration, kubeadm defaults it to systemd.*
-		
-  https://sleeplessbeastie.eu/2021/09/10/how-to-enable-control-group-v2/
-		https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
 
-	Install containerd https://github.com/containerd/containerd/blob/main/docs/getting-started.md
-		wget https://github.com/containerd/containerd/releases/download/v1.7.1/containerd-1.7.1-linux-amd64.tar.gz
-		tar Cxzvf /usr/local containerd-1.7.1-linux-amd64.tar.gz
-		## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
-		nano /lib/systemd/system/containerd.service
-		systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
+4. [Install containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md)
+
+```bash
+wget https://github.com/containerd/containerd/releases/download/v1.7.1/containerd-1.7.1-linux-amd64.tar.gz  
+tar Cxzvf /usr/local containerd-1.7.1-linux-amd64.tar.gz  
+## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
+nano /lib/systemd/system/containerd.service
+systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
+```
 		
 	Configure containerd https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
 	
