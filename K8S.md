@@ -42,16 +42,34 @@ wget https://github.com/containerd/containerd/releases/download/v1.7.1/container
 tar Cxzvf /usr/local containerd-1.7.1-linux-amd64.tar.gz  
 nano /lib/systemd/system/containerd.service ## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
 systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
+#Configure containerd https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
 ```
-Configure containerd https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
-	
-Installing runc (https://github.com/opencontainers/runc/releases)
-		wget https://github.com/opencontainers/runc/releases/download/v1.1.7/runc.amd64 && install -m 755 runc.amd64 /usr/local/sbin/runc
-		install -m 755 runc.amd64 /usr/local/sbin/runc
-	Installing CNI plugins (https://github.com/containernetworking/plugins/releases)
-		wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz && mkdir -p /opt/cni/bin && tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
-	
-	Installing k8s (https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+
+5. [Installing runc](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-2-installing-runc)
+
+```bash
+wget https://github.com/opencontainers/runc/releases/download/v1.1.7/runc.amd64 && install -m 755 runc.amd64 /usr/local/sbin/runc
+```
+
+6. [Installing CNI plugins](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-3-installing-cni-plugins)
+```bash
+wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz && mkdir -p /opt/cni/bin && tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
+```
+
+7. [Debugging Kubernetes nodes with crictl](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/)
+
+```bash
+/etc/crictl.yaml
+```
+
+```yml
+runtime-endpoint: unix:///var/run/containerd/containerd.sock
+image-endpoint: unix:///var/run/containerd/containerd.sock
+timeout: 10
+debug: true
+```
+
+ 8.[Installing k8s](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 		sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl
 		curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/google.gpg
 		sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
