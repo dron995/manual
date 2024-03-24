@@ -8,10 +8,10 @@ https://github.com/containerd/containerd/blob/main/contrib/ansible/README.md :)
 2. [Forwarding-ipv4-and-letting-iptables-see-bridged-traffic](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#forwarding-ipv4-and-letting-iptables-see-bridged-traffic)
 
 `
-cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
-overlay
-br_netfilter
-EOF
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf  
+overlay  
+br_netfilter  
+EOF  
 `
 
 `
