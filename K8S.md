@@ -56,18 +56,29 @@ nano /etc/containerd/config.toml
     SystemdCgroup = true
 ```
 
-5. [Installing runc](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-2-installing-runc)
+6. [Overriding the sandbox (pause) image](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#override-pause-image-containerd)
+
+```bash
+nano /etc/containerd/config.toml
+```
+
+```toml
+[plugins."io.containerd.grpc.v1.cri"]
+  sandbox_image = "registry.k8s.io/pause:3.2"
+```
+
+7. [Installing runc](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-2-installing-runc)
 
 ```bash
 wget https://github.com/opencontainers/runc/releases/download/v1.1.7/runc.amd64 && install -m 755 runc.amd64 /usr/local/sbin/runc
 ```
 
-6. [Installing CNI plugins](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-3-installing-cni-plugins)
+8. [Installing CNI plugins](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-3-installing-cni-plugins)
 ```bash
 wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz && mkdir -p /opt/cni/bin && tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
 ```
 
-7. [Debugging Kubernetes nodes with crictl](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/)
+9. [Debugging Kubernetes nodes with crictl](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/)
 
 ```bash
 /etc/crictl.yaml
