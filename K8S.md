@@ -40,14 +40,12 @@ cgroupDriver: systemd
 ```bash
 wget https://github.com/containerd/containerd/releases/download/v1.7.1/containerd-1.7.1-linux-amd64.tar.gz  
 tar Cxzvf /usr/local containerd-1.7.1-linux-amd64.tar.gz  
-## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
-nano /lib/systemd/system/containerd.service
+nano /lib/systemd/system/containerd.service ## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
 systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
 ```
-		
-	Configure containerd https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
+Configure containerd https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
 	
-	Installing runc (https://github.com/opencontainers/runc/releases)
+Installing runc (https://github.com/opencontainers/runc/releases)
 		wget https://github.com/opencontainers/runc/releases/download/v1.1.7/runc.amd64 && install -m 755 runc.amd64 /usr/local/sbin/runc
 		install -m 755 runc.amd64 /usr/local/sbin/runc
 	Installing CNI plugins (https://github.com/containernetworking/plugins/releases)
