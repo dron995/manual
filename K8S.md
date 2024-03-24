@@ -23,13 +23,19 @@ EOF
 #Apply sysctl params without reboot  
 sudo sysctl --system  
 ```
-	
+
+ 3. [cgroup-drivers](Cgroupfs driver https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers)
+
+ To set systemd as the cgroup driver, edit the KubeletConfiguration option of cgroupDriver and set it to systemd. For example:
+```yml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+...
+cgroupDriver: systemd
+```
+*Note: Starting with v1.22 and later, when creating a cluster with kubeadm, if the user does not set the cgroupDriver field under KubeletConfiguration, kubeadm defaults it to systemd.*
 		
-		
-	Cgroupfs driver https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers
-			
-		
-		https://sleeplessbeastie.eu/2021/09/10/how-to-enable-control-group-v2/
+  https://sleeplessbeastie.eu/2021/09/10/how-to-enable-control-group-v2/
 		https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
 
 	Install containerd https://github.com/containerd/containerd/blob/main/docs/getting-started.md
