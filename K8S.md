@@ -92,32 +92,10 @@ debug: true
 ```
 
  8.[Installing k8s](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
-		sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl
-		curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/google.gpg
-		sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-		
-		sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl && sudo apt-mark hold kubelet kubeadm kubectl
-		
-		
-	
 
-To start using your cluster, you need to run the following as a regular user:
-
-  mkdir -p $HOME/.kube &&   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config &&   sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-Alternatively, if you are the root user, you can run:
-
-  export KUBECONFIG=/etc/kubernetes/admin.conf
-
-You should now deploy a pod network to the cluster.
-Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-  https://kubernetes.io/docs/concepts/cluster-administration/addons/
-
-Then you can join any number of worker nodes by running the following on each as root:
-
-kubeadm join 192.168.81.8:6443 --token kwexqu.f9pfdigryk3eho4l \
-        --discovery-token-ca-cert-hash sha256:c02b11b578848c8e45dbcde33bcaeebf50e94b9574e19ad2c6950e859e4645aa
-
-
-
-kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |tr -s '[[:space:]]' '\n' |sort |uniq -c
+```bash
+sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/google.gpg
+sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl && sudo apt-mark hold kubelet kubeadm kubectl
+```
