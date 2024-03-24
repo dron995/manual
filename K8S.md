@@ -1,8 +1,9 @@
-How to install Kubernetes on Ubuntu 22.04 Jammy Jellyfish Linux - Linux Tutorials
 https://github.com/containerd/containerd/blob/main/contrib/ansible/README.md :)
 		
-	Отключаем swap, 
-		закомментировав раздел в /etc/fstab
+1. Отключаем swap
+`
+закомментировав раздел в /etc/fstab
+`
 	Forwarding-ipv4-and-letting-iptables-see-bridged-traffic https://kubernetes.io/docs/setup/production-environment/container-runtimes/#forwarding-ipv4-and-letting-iptables-see-bridged-traffic
 		
 	
