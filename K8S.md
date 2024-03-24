@@ -42,7 +42,18 @@ wget https://github.com/containerd/containerd/releases/download/v1.7.1/container
 tar Cxzvf /usr/local containerd-1.7.1-linux-amd64.tar.gz  
 nano /lib/systemd/system/containerd.service ## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
 systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
-#Configure containerd https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
+```
+5. [Configure containerd](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
+
+```bash
+nano /etc/containerd/config.toml
+```
+
+```toml
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+  ...
+  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+    SystemdCgroup = true
 ```
 
 5. [Installing runc](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-2-installing-runc)
