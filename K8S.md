@@ -4,7 +4,8 @@ https://github.com/containerd/containerd/blob/main/contrib/ansible/README.md :)
 `
 закомментировав раздел в /etc/fstab
 `
-	Forwarding-ipv4-and-letting-iptables-see-bridged-traffic https://kubernetes.io/docs/setup/production-environment/container-runtimes/#forwarding-ipv4-and-letting-iptables-see-bridged-traffic
+	
+2. [Forwarding-ipv4-and-letting-iptables-see-bridged-traffic](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#forwarding-ipv4-and-letting-iptables-see-bridged-traffic)
 		
 	
 		
