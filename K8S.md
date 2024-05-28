@@ -37,9 +37,9 @@ cgroupDriver: systemd
 4. [Install containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md)
 
 ```bash
-wget https://github.com/containerd/containerd/releases/download/v1.7.14/containerd-1.7.14-linux-amd64.tar.gz  && \
-tar Cxzvf /usr/local containerd-1.7.14-linux-amd64.tar.gz && \
-rm containerd-1.7.14-linux-amd64.tar.gz
+wget https://github.com/containerd/containerd/releases/download/v1.7.17/containerd-1.7.17-linux-amd64.tar.gz  && \
+tar Cxzvf /usr/local containerd-1.7.17-linux-amd64.tar.gz && \
+rm containerd-1.7.17-linux-amd64.tar.gz
 
 nano /lib/systemd/system/containerd.service ## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
 systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
