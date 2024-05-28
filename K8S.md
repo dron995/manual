@@ -75,7 +75,8 @@ nano /etc/containerd/config.toml
 7. [Installing runc](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-2-installing-runc)
 
 ```bash
-wget https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64 && install -m 755 runc.amd64 /usr/local/sbin/runc
+version='1.1.12'; wget https://github.com/opencontainers/runc/releases/download/v${version}/runc.amd64 && install -m 755 runc.amd64 /usr/local/sbin/runc && \
+rm runc.amd64
 ```
 
 8. [Installing CNI plugins](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#step-3-installing-cni-plugins)
