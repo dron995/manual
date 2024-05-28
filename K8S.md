@@ -39,9 +39,8 @@ cgroupDriver: systemd
 ```bash
 version='1.7.17'; wget https://github.com/containerd/containerd/releases/download/v${version}/containerd-${version}-linux-amd64.tar.gz  && \
 tar Cxzvf /usr/local containerd-${version}-linux-amd64.tar.gz && \
-rm containerd-${version}-linux-amd64.tar.gz
-
-nano /lib/systemd/system/containerd.service ## install as daemon https://github.com/containerd/containerd/blob/main/containerd.service
+rm containerd-${version}-linux-amd64.tar.gz && \
+curl -L https://raw.githubusercontent.com/containerd/containerd/main/containerd.service -o /lib/systemd/system/containerd.service && \
 systemctl daemon-reload && systemctl enable --now containerd && mkdir -p /etc/containerd && containerd config default > /etc/containerd/config.toml
 ```
 5. [Configure containerd](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd)
