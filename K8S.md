@@ -98,8 +98,7 @@ EOF
  8.[Installing k8s](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 ```bash
-sudo apt-get update
-# apt-transport-https may be a dummy package; if so, you can skip that package
+sudo apt-get update && \
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 ```
 ```bash
