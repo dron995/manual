@@ -87,14 +87,12 @@ version='1.5.0'; wget https://github.com/containernetworking/plugins/releases/do
 9. [Debugging Kubernetes nodes with crictl](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/)
 
 ```bash
-/etc/crictl.yaml
-```
-
-```yml
+cat <<EOF | sudo tee /etc/crictl.yaml
 runtime-endpoint: unix:///var/run/containerd/containerd.sock
 image-endpoint: unix:///var/run/containerd/containerd.sock
 timeout: 10
 debug: true
+EOF
 ```
 
  8.[Installing k8s](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
