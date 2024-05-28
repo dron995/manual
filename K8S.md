@@ -9,12 +9,13 @@ cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay  
 br_netfilter  
 EOF
-````bash
+```
 
-````bash
-sudo modprobe overlay  && sudo modprobe br_netfilter  
-````bash
+```bash
+sudo modprobe overlay  && sudo modprobe br_netfilter
+```
 
+```bash
 #sysctl params required by setup, params persist across reboots  
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf  
 net.bridge.bridge-nf-call-iptables  = 1  
