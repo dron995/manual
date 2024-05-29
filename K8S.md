@@ -15,7 +15,6 @@ EOF
 sudo modprobe overlay  && sudo modprobe br_netfilter
 ```
 
-sysctl params required by setup, params persist across reboots
 ```bash
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf  
 net.bridge.bridge-nf-call-iptables  = 1  
@@ -101,19 +100,21 @@ EOF
 sudo apt-get update && \
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 ```
-*If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
+*Note: If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.*
+
 ```bash
 if [ ! -d /etc/apt/keyrings ]; then sudo mkdir -p -m 755 /etc/apt/keyrings; fi
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 ```
-*This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+*Note:This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list*
+
 ```bash
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 ```bash
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
+sudo apt-get update && \
+sudo apt-get install -y kubelet kubeadm kubectl && \
+sudo apt-mark hold kubelet kubeadm kubectl && \
 sudo systemctl enable --now kubelet
 ```
 
