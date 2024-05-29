@@ -128,7 +128,7 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 mkdir -p $HOME/.kube && \
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config && \
 sudo chown $(id -u):$(id -g) $HOME/.kube/config  && \
-echo "export KUBE_EDIT='nano'" >> ~/.bashrc
+echo "export KUBE_EDITOR='nano'" >> ~/.bashrc
 ```
 9. [Installing Addons](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy)
 *Note: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart*
