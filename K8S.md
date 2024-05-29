@@ -118,8 +118,8 @@ sudo apt-mark hold kubelet kubeadm kubectl && \
 sudo systemctl enable --now kubelet
 ```
 
-9. [Installing Addons](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy)
 
+9. Kube init
 ```bash
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
@@ -130,7 +130,8 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config && \
 sudo chown $(id -u):$(id -g) $HOME/.kube/config  && \
 echo "export KUBE_EDIT='nano'" >> ~/.bashrc
 ```
-10. https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart
+9. [Installing Addons](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy)
+*Note: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart*
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.2/manifests/tigera-operator.yaml
